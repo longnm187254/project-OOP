@@ -115,6 +115,64 @@ public class CarList {
             listCars.add(newtruck);
         }
     }
+    // Tim kiem HopDong theo Ten, BienSoXe, LoaiXe.
+    public static void FindCar(ArrayList<Car> list) {
+        Car[] cars = new Car[listCars.size()];
+        list.toArray(cars);
+
+        int input, numberCar;
+        String name, type;
+        Scanner sc = new Scanner(System.in);
+
+        do {
+            System.out.println("Chon phuong thuc tim kiem");
+            System.out.println("1. Tim theo ten");
+            System.out.println("2. Tim theo bien so xe");
+            System.out.println("3. Tim theo loai xe");
+            input = sc.nextInt();
+
+            switch (input) {
+                case (1):
+                    System.out.println(" Nhap ten nguoi so huu ");
+                    name = sc.nextLine();
+
+                    for (int i = 0; i < cars.length; i++) {
+                        if (name.equals(cars[i].getCarOwner())) {
+                            cars[i].InThongTin();
+                        }
+                    }
+                    sc.nextLine();
+                    break;
+
+                case (2):
+                    System.out.println(" Nhap bien so xe ");
+                    numberCar = sc.nextInt();
+
+                    for (int i = 0; i < cars.length; i++) {
+                        if (numberCar == cars[i].getCarNumber()) {
+                            cars[i].InThongTin();
+                        }
+                    }
+                    sc.nextLine();
+                    break;
+
+                case (3):
+                    System.out.println(" Nhap loai xe ");
+                    type = sc.nextLine();
+
+                    for (int i = 0; i < cars.length; i++) {
+                        if (type.equals(cars[i].getTypeCar())) {
+                            cars[i].InThongTin();
+                        }
+                    }
+                    sc.nextLine();
+                    break;
+                default:
+                    System.out.println("Nhan nut bat ky de thoat");
+                    break;
+            }
+        }while (input == 1 || input == 2 || input == 3);
+    }
 
     //4.Tinh Tong tien trong khoang thoi gian nhat dinh
     public static void Tong(ArrayList<Car> list) {
